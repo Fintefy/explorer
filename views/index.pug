@@ -6,30 +6,17 @@ block headContent
 block content
 	h1 #{coinConfig.siteTitle}
 	hr
-
-	p
-		strong #{coinConfig.siteTitle}
-		span  is 
-		a(href="https://github.com/janoside/btc-rpc-explorer") open-source.
-		span  If you run your own 
-		a(href=coinConfig.nodeUrl) #{coinConfig.name} Full Node
-		span ,
-		strong  #{coinConfig.siteTitle}
-		span  can easily run alongside it, communicating via RPC calls. See the
-		a(href="https://github.com/janoside/btc-rpc-explorer")  project description
-		span  for a list of features and instructions for running.
-
 	
 	if (latestBlocks)
 		div(class="row mt-5")
 			div(class="col")
-				h3 Latest Blocks
+				h3 新近区块
 					if (getblockchaininfo.initialblockdownload)
 						small  (#{(getblockchaininfo.headers - getblockchaininfo.blocks).toLocaleString()} behind)
 
 			div(class="col")
 				span(style="float: right;")
-					a(href="/blocks") Browse Blocks &raquo;
+					a(href="/blocks") 浏览区块 &raquo;
 
 		hr
 

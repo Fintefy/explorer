@@ -1,33 +1,30 @@
 extends layout
 
 block headContent
-	title Mempool Summary
+	title 内存池摘要
 	
 block content
-	h1 Mempool Summary
+	h1 内存池摘要
 	hr
 
-	if (getmempoolinfo)
-		p Data from RPC command  
-			a(href="/rpc-browser?method=getmempoolinfo") getmempoolinfo
-			
+	if (getmempoolinfo)		
 		table(class="table")
 			tr
-				th(class="table-active properties-header") Transaction Count
+				th(class="table-active properties-header") 交易数
 				td #{getmempoolinfo.size.toLocaleString()}
 			tr
-				th(class="table-active properties-header") Memory Usage
+				th(class="table-active properties-header") 内存使用
 				td(class="monospace")
 					span #{utils.formatBytes(getmempoolinfo.usage)}
 					span(class="text-muted")  (virtual size: #{utils.formatBytes(getmempoolinfo.bytes)})
 			tr
-				th(class="table-active properties-header") Max Size
+				th(class="table-active properties-header") 最大容量
 				td(class="monospace") #{utils.formatBytes(getmempoolinfo.maxmempool)}
 			tr
-				th(class="table-active properties-header") Min Fee
+				th(class="table-active properties-header") 最小手续费
 				td(class="monospace") #{getmempoolinfo.mempoolminfee.toLocaleString()}
 			tr
-				th(class="table-active properties-header") Total Fees
+				th(class="table-active properties-header") 手续费
 				td(class="monospace") #{utils.formatCurrencyAmount(mempoolstats.totalFee, currencyFormatType)}
 					if (global.exchangeRate)
 						span  
@@ -35,7 +32,7 @@ block content
 							i(class="fas fa-exchange-alt")
 
 
-		h4 Transaction count by fee level
+		h4 交易数和交易费比值
 		hr
 
 		if (false)

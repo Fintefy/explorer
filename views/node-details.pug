@@ -1,20 +1,13 @@
 extends layout
 
 block headContent
-	title Node Details
+	title 节点信息
 	
 block content
-	h1 Node Details
+	h1 节点信息
 	hr
 
 	if (getblockchaininfo)
-		p Data from RPC commands 
-			a(href="/rpc-browser?method=getblockchaininfo") getblockchaininfo
-			span , 
-			a(href="/rpc-browser?method=getnetworkinfo") getnetworkinfo
-			span , and 
-			a(href="/rpc-browser?method=getnettotals") getnettotals
-
 		if (false)
 			pre
 				code #{JSON.stringify(getblockchaininfo, null, 4)}
@@ -22,32 +15,32 @@ block content
 		if (true)
 			table(class="table")
 				tr
-					th(class="table-active properties-header") Chain
+					th(class="table-active properties-header") 区块链
 					td(class="monospace") #{getblockchaininfo.chain}
 				tr
-					th(class="table-active properties-header") Version
+					th(class="table-active properties-header") 版本
 					td(class="monospace") #{getnetworkinfo.version}
 						span(class="monospace")  (#{getnetworkinfo.subversion})
 				tr
-					th(class="table-active properties-header") Protocol Version
+					th(class="table-active properties-header") 协议版本
 					td(class="monospace") #{getnetworkinfo.protocolversion}
 
 				if (getblockchaininfo.size_on_disk)
 					tr
-						th(class="table-active properties-header") Blockchain Size on Disk
+						th(class="table-active properties-header") 磁盘空间
 						td(class="monospace") #{getblockchaininfo.size_on_disk.toLocaleString()}
 							span(class="text-muted")  (pruned: #{getblockchaininfo.pruned})
 				tr
-					th(class="table-active properties-header") Connections
+					th(class="table-active properties-header") 连接数
 					td(class="monospace") #{getnetworkinfo.connections.toLocaleString()}
 				tr
-					th(class="table-active properties-header") Block Count
+					th(class="table-active properties-header") 区块数
 					td(class="monospace") #{getblockchaininfo.blocks.toLocaleString()}
 						span(class="text-muted")  (header count: #{getblockchaininfo.headers.toLocaleString()})
 				tr
 					- var scales = [ {val:1000000000000000, name:"quadrillion"}, {val:1000000000000, name:"trillion"}, {val:1000000000, name:"billion"}, {val:1000000, name:"million"} ];
 					- var scaleDone = false;
-					th(class="table-active properties-header") Difficulty
+					th(class="table-active properties-header") 难度
 					td(class="monospace")
 						span #{getblockchaininfo.difficulty.toLocaleString()}
 						each item in scales
@@ -58,20 +51,20 @@ block content
 									span(class="text-muted")  (#{fraction} #{item.name})
 
 				tr
-					th(class="table-active properties-header") Status
+					th(class="table-active properties-header") 状态
 					td(class="monospace")
 						if (getblockchaininfo.initialblockdownload)
-							span Initial block download progress #{(100 * getblockchaininfo.verificationprogress).toLocaleString()}%
+							span 区块下载进度 #{(100 * getblockchaininfo.verificationprogress).toLocaleString()}%
 						else
-							span Synchronized with network
+							span 网络已经同步
 
 				- var startTimeAgo = moment.duration(uptimeSeconds * 1000);
 				tr
-					th(class="table-active properties-header") Uptime
+					th(class="table-active properties-header") 连线时长
 					td(class="monospace") #{startTimeAgo.format()}
 
 				tr
-					th(class="table-active properties-header") Network Traffic
+					th(class="table-active properties-header") 网络流量
 					td(class="monospace")
 						span Total Download: #{utils.formatBytes(getnettotals.totalbytesrecv)}
 						span(class="text-muted")  (avg #{utils.formatBytes(getnettotals.totalbytesrecv / uptimeSeconds)}/s)
@@ -80,7 +73,7 @@ block content
 						span(class="text-muted")  (avg #{utils.formatBytes(getnettotals.totalbytessent / uptimeSeconds)}/s)
 
 				tr
-					th(class="table-active properties-header") Warnings
+					th(class="table-active properties-header") 警告
 					td(class="monospace")
 						if (getblockchaininfo.warnings && getblockchaininfo.warnings.trim().length > 0)
 							span #{getblockchaininfo.warnings}

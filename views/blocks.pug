@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	h1(class="h2") Blocks
+	h1(class="h2") 区块
 	hr
 
 	if (blocks)
@@ -9,10 +9,10 @@ block content
 			ul(class="pagination justify-content-center")
 				li(class="page-item", class=(sort == "asc" ? "active" : false))
 					a(class="page-link", href=(sort == "asc" ? "javascript:void(0)" : "/blocks?limit=" + limit + "&offset=0" + "&sort=asc"))
-						span(aria-hidden="true") Oldest blocks first
+						span(aria-hidden="true") 区块数从小到大排序
 				li(class="page-item", class=(sort == "desc" ? "active" : false))
 					a(class="page-link", href=(sort == "desc" ? "javascript:void(0)" : "/blocks?limit=" + limit + "&offset=0" + "&sort=desc"))
-						span(aria-hidden="true") Newest blocks first
+						span(aria-hidden="true") 区块数从大到小排序
 
 		include includes/blocks-list.pug
 

@@ -76,14 +76,14 @@ function refreshExchangeRate() {
 
 
 
-app.runOnStartup = function() {
+/* app.runOnStartup = function() {
 	if (global.exchangeRate == null) {
 		refreshExchangeRate();
 	}
 
 	// refresh exchange rate periodically
 	setInterval(refreshExchangeRate, 1800000);
-};
+}; */
 
 
 app.locals.sourcecodeVersion = null;

@@ -35,11 +35,11 @@ html
 							li(class="nav-item")
 								a(href="/node-details", class="nav-link")
 									i(class="fas fa-info-circle")
-									span  Node Details
+									span  节点信息
 							li(class="nav-item dropdown")
 								a(class="nav-link dropdown-toggle", href="javascript:void(0)", id="navbarDropdown", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false") 
 									i(class="fas fa-cog")
-									span  Settings
+									span  配置
 								div(class="dropdown-menu", aria-labelledby="navbarDropdown")
 									if (coinConfig.currencyUnits)
 										span(class="dropdown-header") Currency Units
@@ -52,18 +52,14 @@ html
 
 						form(method="post", action="/search", class="form-inline")
 							div(class="input-group")
-								input(type="text", class="form-control form-control-sm", name="query", placeholder="block height, block hash, txid", value=(query), style="width: 250px;")
+								input(type="text", class="form-control form-control-sm", name="query", placeholder="区块高度, 区块哈希, 交易ID", value=(query), style="width: 250px;")
 								span(class="input-group-btn")
-									input(type="submit", class="btn btn-primary", value="Search")
+									input(type="submit", class="btn btn-primary", value="搜索")
 
 		div(class="container mb-4", style="margin-top: -1.0rem;")
 			ul(class="nav")
 				li(class="nav-item")
-					a(href="/rpc-browser", class="nav-link") RPC Browser
-				li(class="nav-item")
-					a(href="/rpc-terminal", class="nav-link") RPC Terminal
-				li(class="nav-item")
-					a(href="/mempool-summary", class="nav-link") Mempool Summary
+					a(href="/mempool-summary", class="nav-link") 内存池概要
 				if (coinConfig.historicalData && coinConfig.historicalData.length > 0)
 					li(class="nav-item")
 						a(href="/fun", class="nav-link") #{coinConfig.name} Fun
@@ -81,29 +77,8 @@ html
 
 			footer(class="pt-4 my-md-5 pt-md-5 border-top")
 				ul
-					li MIT-licensed source code available on github: 
-						a(href="https://github.com/janoside/btc-rpc-explorer") janoside/btc-rpc-explorer
-						if (sourcecodeVersion)
-							span  (@
-							a(href=("https://github.com/janoside/btc-rpc-explorer/commit/" + sourcecodeVersion)) #{sourcecodeVersion}
-							span )
+					li #{coinConfig.siteTitle}
 
-					li Public instance maintained at 
-						a(href="https://btc-explorer.com") https://btc-explorer.com
-					
-					li Donate
-						ul
-							li
-								a(href="bitcoin:3NPGpNyLLmVKCEcuipBs7G4KpQJoJXjDGe") BTC
-								span  - 3NPGpNyLLmVKCEcuipBs7G4KpQJoJXjDGe
-							li
-								a(href="litecoin:ME4pXiXuWfEi1ANBDo9irUJVcZBhsTx14i") LTC
-								span  - ME4pXiXuWfEi1ANBDo9irUJVcZBhsTx14i
-								
-
-					li &copy; 2018 
-						a(href="https://danjanosik.com") Dan Janosik
-				
 		if (env.showForkBanner)
 			div(class="d-none d-md-block")
 				a(href="https://github.com/janoside/btc-rpc-explorer")
