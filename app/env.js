@@ -28,8 +28,8 @@ module.exports = {
 	// Otherwise, you can manually connect via the UI.
 
 	bitcoind:{
-		host:"47.104.67.154",
-		port:10332,
+		host:"localhost",
+		port:11332,
 		rpc: {
 			username:"bppdev",
 			password:"pass"
