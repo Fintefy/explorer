@@ -31,7 +31,7 @@ module.exports = {
 		host:"localhost",
 		port:11332,
 		rpc: {
-			username:"bppdev",
+			username:"webdev",
 			password:"pass"
 		}
 	}
